@@ -6,8 +6,8 @@ const Task = require('../models/TaskSchema');
 
 router.get('/', async (req, res) => {
   try {
-    const tasks = await Task.find();
-    res.json(tasks);
+    const tasks = await Task.find().populate('owner');
+    res.json(tasks).populate('project');
   } catch (error) {
     console.error('Error fetching tasks:', error);
     res.status(500).json({ error: 'Internal server error' });
@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {   
   try {
-    const task = await Task.findById(req.params.id); 
+    const task = await Task.findById(req.params.id).populate('owner').populate('project'); 
     if (!task) {
       return res.status(404).json({ error: 'Task not found' });
     }

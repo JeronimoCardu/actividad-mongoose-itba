@@ -9,10 +9,11 @@ app.use(express.json());
 
 const taskRoutes = require("./routes/taskRoutes");
 const projectRoutes = require("./routes/projectRoutes");
+const userRoutes = require("./routes/userRoutes");
 app.use("/tasks", taskRoutes);
 app.use("/projects", projectRoutes);
- 
- 
+app.use("/users", userRoutes);
+
 // Iniciar el servidor Express
 app.listen(PORT, () => {
   console.log(`Servidor Express escuchando en el puerto ${PORT}`);

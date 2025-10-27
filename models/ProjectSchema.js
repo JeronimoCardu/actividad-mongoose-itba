@@ -29,10 +29,10 @@ const projectSchema = new mongoose.Schema({
 'cancelled'], 
     default: 'planning' 
   }, 
-  startDate: Date, 
-  endDate: Date, 
-  budget: Number, 
-  client: String 
+  startDate: { type: Date }, 
+  endDate: { type: Date }, 
+  budget: { type: Number }, 
+  client: { type: String } 
 }, { 
   timestamps: true 
 });

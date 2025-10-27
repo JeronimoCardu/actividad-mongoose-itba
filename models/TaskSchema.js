@@ -26,20 +26,20 @@ const taskSchema = new mongoose.Schema({
     enum: ['low', 'medium', 'high', 'critical'], 
     default: 'medium' 
   }, 
-  dueDate: Date, 
-  estimatedHours: Number, 
-  actualHours: Number, 
+  dueDate: {type: Date}, 
+  estimatedHours:{type: Number}, 
+  actualHours: {type: Number}, 
   tags: [String], 
   dependencies: [{ 
     type: mongoose.Schema.Types.ObjectId, 
     ref: 'Task' 
   }], 
   attachments: [{ 
-    filename: String, 
-    url: String, 
+    filename: {type: String}, 
+    url: {type: String}, 
     uploadedAt: { 
       type: Date, 
-      default: Date.now 
+      default: Date.now
     } 
   }] 
 }, { 
